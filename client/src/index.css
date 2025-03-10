@@ -5,37 +5,32 @@
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: #222222; /* Darker text for better contrast */
+  background-color: #f4f4f4; /* Softer background */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* webkit solution */
-::-webkit-input-placeholder { 
-  text-align:right; 
-}
-
-/* mozilla solution */
-input:-moz-placeholder { 
-  text-align:right; 
-}
+/* Placeholder Styling */
+::-webkit-input-placeholder { text-align: right; }
+input:-moz-placeholder { text-align: right; }
 
 a {
   font-weight: 500;
-  color: #000000;
-  text-decoration: inherit;
+  color: #34495e; /* Dark blue for better contrast */
+  text-decoration: none;
 }
 a:hover {
-  color: #535bf2;
+  color: #1e88e5; /* Brighter blue */
 }
 
 body {
-  background: #ECF0F1;
+  background: #f9f9f9; /* Light gray for softer look */
   background-size: cover;
-  background-repeat: no-repeat no-repeat;
-  background-position: center center;
+  background-repeat: no-repeat;
+  background-position: center;
   margin: 0;
   place-items: center;
   min-width: 320px;
@@ -43,8 +38,10 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 2.5em;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #2c3e50; /* Darker shade for headers */
 }
 
 button {
@@ -54,16 +51,16 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #2c3e50; /* Dark blue */
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.3s ease-in-out;
 }
 button:hover {
-  border-color: #646cff;
+  background-color: #1e88e5; /* Brighter hover effect */
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+button:focus {
+  outline: 3px auto #1e88e5;
 }
 
 main {
@@ -74,184 +71,190 @@ main {
   flex-direction: row;
 }
 
+/* Table */
+.table {
+  width: 80vw;
+  table-layout: fixed;
+}
+
 tr {
   border-radius: 10px;
-  background-color: #000;
+  background-color: #37474f; /* Dark gray */
   color: white;
 }
 
 tbody tr:nth-child(odd) {
-  background-color: #333333;
+  background-color: #546e7a; /* Lighter gray */
 }
 
-/* Navbar Content */
+/* Navbar */
 .nav {
   display: flex;
   padding: 1em 2em;
+  background: #2c3e50; /* Dark blue */
+  color: white;
 }
 
 .nav ul {
   display: flex;
   margin-left: auto;
-  flex-direction: row;
 }
 
 .nav-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: larger;
+  font-size: 1.5em;
   font-weight: 900;
 }
-
 .nav-title a {
-  color: #b864c4;
-}
-
-.nav-item {
-  display: block;
-  margin-left: auto;
-  list-style: none;
+  color: #ffca28; /* Yellow accent */
 }
 
 .nav-link {
-  color: #fff;
-  text-decoration: none;
+  color: white;
+}
+.nav-link:hover {
+  color: #ffca28;
 }
 
 .active {
   font-weight: 700;
 }
 
-.table {
-  width: 80vw;
-  table-layout: fixed;
-}
-
+/* Board Styling */
 .board {
   width: 100%;
-}
-
-.board-display {
   display: flex;
+  gap: 10px;
 }
 
 .swim-lane {
   text-align: center;
   font-weight: 500;
   width: 33%;
-  height: 90vh; 
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  margin: 5px;
-  padding: 5px;
+  height: 90vh;
+  border-radius: 8px;
+  padding: 15px;
+  color: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Swim Lane Colors */
 .todo {
-  background-color: #e9cbec;
+  background-color: #ffebee; /* Soft red */
 }
 
 .inprogress {
-  background-color: #b864c4;
+  background-color: #fff3e0; /* Soft orange */
 }
 
 .done {
-  background-color: #732381;
+  background-color: #e8f5e9; /* Soft green */
 }
 
+/* Ticket Cards */
 .ticket-card {
-  text-align: left;
-  background-color: #fff;
+  background-color: white;
   padding: 15px;
   margin-bottom: 10px;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 0.1em solid black;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #b0bec5;
 }
 
-.container {
-  /* margin: auto; */
-  width: 100%;
-  /* height: 90%; */
-}
-
-#create-ticket-link {
-  display: block;
-  margin-left: auto;
-}
-
-
+/* Forms */
 .form {
   width: 60%;
-  height: 80%;
-  background-color: #b864c4;
-  margin: auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
-.form > h1, .form > label {
-  color: yellow;
-}
-
-.form > input {
-  width: 200px;
-  
+.form > h1 {
+  color: #2c3e50;
 }
 
 .form > label {
-  margin-top: 2.5%;
-  margin-bottom: 2.5%;
+  color: #37474f;
+  font-weight: 500;
+}
+
+.form > input, .form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
 }
 
 .form button {
-  margin-top: 2.5%;
-}
-
-.form textarea {
-  resize: both;
-  min-height: 30px;
-  min-width: 30px;
+  width: 100%;
+  background-color: #1e88e5;
+  color: white;
 }
 
 .editBtn {
-  background-color: #f9f9f9;
+  background-color: #eceff1;
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid #b0bec5;
   padding: 0.6em 1.2em;
   cursor: pointer;
-  transition: border-color 0.25s;
+}
+.editBtn:hover {
+  background-color: #b0bec5;
 }
 
 .deleteBtn {
-  background-color: #f9f9f9;
-  font-weight: 500;
-  color: black;
-  text-decoration: inherit;
+  background-color: #e53935;
+  color: white;
 }
-
 .deleteBtn:hover {
-  color: #535bf2;
+  background-color: #c62828;
 }
 
+/* Login Notice */
 .login-notice {
   display: flex;
-  width: 100%;
-  align-items: center;
   justify-content: center;
+  padding: 15px;
+  font-weight: 500;
+  color: #2c3e50;
 }
 
-
-@media (prefers-color-scheme: light) {
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #e0e0e0;
+    background-color: #121212;
   }
+  body {
+    background: #121212;
+  }
+
+  a {
+    color: #90caf9;
+  }
+
   a:hover {
-    color: #747bff;
+    color: #ffca28;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .nav {
+    background: #1e1e1e;
+  }
+
+  .swim-lane {
+    background: #222222;
+  }
+
+  .ticket-card {
+    background: #333333;
+    border: 1px solid #444;
+  }
+
+  .form {
+    background: #1e1e1e;
   }
 }

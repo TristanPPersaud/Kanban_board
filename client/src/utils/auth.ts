@@ -1,50 +1,45 @@
-import jwt_decode from 'jwt-decode';
+import { JwtPayload, jwtDecode } from "jwt-decode";
 
 class AuthService {
-  // Get the decoded token (profile)
   getProfile() {
+    // Return the decoded token
     const token = this.getToken();
-    if (token) {
-      return jwt_decode(token); // Decode the token and return the payload
-    }
-    return null; // If no token, return null
+    return token ? jwtDecode(token) : null;
   }
 
-  // Check if the user is logged in
-  loggedIn(): boolean {
+  loggedIn() {
+    // Return a value that indicates if the user is logged in
     const token = this.getToken();
-    // Check if a token exists and if it's valid (i.e., not expired)
-    return !!token && !this.isTokenExpired(token);
+    return token;
   }
 
-  // Check if the token is expired
-  isTokenExpired(token: string): boolean {
+  isTokenExpired(token: string) {
+    // Return a value that indicates if the token is expired
     try {
-      const decoded: any = jwt_decode(token);
-      if (decoded.exp) {
-        return Date.now() >= decoded.exp * 1000; // exp is in seconds, so multiply by 1000 to convert to milliseconds
+      const decoded = jwtDecode<JwtPayload>(token);
+
+      if (decoded?.exp && decoded?.exp < Date.now() / 1000) {
+        return true;
       }
-      return false; // No expiration means the token is not expired
     } catch (err) {
-      return true; // If decoding fails, consider the token expired
+      return false;
     }
   }
 
-  // Retrieve the token from localStorage
-  getToken(): string | null {
-    return localStorage.getItem('token'); // Return the token stored in localStorage, or null if not found
+  getToken(): string {
+
+    const loggedUser = localStorage.getItem("id_token") || "";
+    return loggedUser;
   }
 
-  // Log the user in by setting the token to localStorage and redirecting
   login(idToken: string) {
-    localStorage.setItem('token', idToken); // Store the token in localStorage
-    window.location.href = '/'; // Redirect to the home page
+    localStorage.setItem("id_token", idToken);
+    window.location.assign("/");
   }
 
-  // Log the user out by removing the token and redirecting to the login page
   logout() {
-    localStorage.removeItem('token'); // Remove the token from localStorage
-    window.location.href = '/login'; // Redirect to the login page
+    localStorage.removeItem("id_token");
+    window.location.assign("/");
   }
 }
 
